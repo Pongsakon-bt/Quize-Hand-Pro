@@ -85,7 +85,7 @@
             </div>
             <!-- ลายน้ำบอกเวอร์ชันเพื่อเช็กว่าโค้ดอัปเดตหรือยัง -->
             <div class="absolute bottom-4 right-4 text-xs font-bold text-cyan-500/50 pointer-events-none z-50 tracking-widest">
-                VERSION 2.2 (MODEL FIX)
+                VERSION 2.5 (LATEST KEY)
             </div>
         </div>
     </div>
@@ -342,7 +342,7 @@
 
     <script>
         // ⚠️ สำคัญ: คีย์ Gemini API ของคุณ
-        const apiKey = "AIzaSyC5k1_4Ryq9tBx9nXMxAzxlsuKqX2j8kGs"; 
+        const apiKey = "AIzaSyDo2J7JwrgeCKluOTRDdwJNn_2KlUjG960"; 
 
         let state = {
             step: 'HOME',
@@ -640,8 +640,10 @@
                 renderPreview();
             } catch (err) {
                 console.error("AI Generation Error:", err);
-                // อัปเดตข้อความแจ้งเตือนให้ครอบคลุม 404 
-                alert("⚠️ ระบบขัดข้อง (V2.2):\n\n" + err.message + "\n\nคำแนะนำ:\n- หากขึ้น HTTP 400 หมายถึง API Key ผิด\n- หากขึ้น HTTP 403 หมายถึง API Key นี้ยังไม่ได้เปิดสิทธิ์ใช้งาน\n- หากขึ้น HTTP 404 หมายถึง รุ่นของ AI ไม่ถูกต้องหรือถูกยกเลิก (ได้ทำการอัปเดตเป็นรุ่นล่าสุดแล้ว)\n- ให้ลองตรวจสอบการเว้นวรรคใน API Key อีกครั้ง");
+                
+                // --- อัปเดตข้อความแจ้งเตือนให้เคลียร์ขึ้นเรื่อง HTTP 403 ---
+                alert(`⚠️ ระบบขัดข้อง (V2.3):\n\n${err.message}\n\nคำแนะนำวิธีแก้ HTTP 403 (ถ้าคุณเจอข้อผิดพลาดนี้):\n1. ไปที่เว็บไซต์ Google AI Studio ที่คุณสร้าง API Key\n2. ตรวจสอบว่าคีย์ของคุณ "ไม่ได้" เปิดใช้งาน 'API key restrictions' (จำกัดเว็บไซต์)\n3. แนะนำให้ลบคีย์เดิมทิ้ง แล้วสร้างคีย์อันใหม่แบบค่าเริ่มต้น (ไม่ต้องตั้งค่าจำกัดใดๆ)\n4. นำคีย์อันใหม่มาใส่ในโค้ดแล้วลองอีกครั้งครับ`);
+                
                 document.getElementById('loading-screen').classList.add('hidden');
                 showContentScreen();
             }
