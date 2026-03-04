@@ -46,7 +46,7 @@
             <div class="w-6 h-6 bg-blue-500 rounded-full animate-bounce shadow-[0_0_15px_rgba(59,130,246,0.8)]" style="animation-delay: 0.15s;"></div>
             <div class="w-6 h-6 bg-yellow-400 rounded-full animate-bounce shadow-[0_0_15px_rgba(250,204,21,0.8)]" style="animation-delay: 0.3s;"></div>
         </div>
-        <h2 class="text-white text-2xl font-bold font-['Kanit'] animate-pulse">กำลังโหลดภาพและระบบ...</h2>
+        <h2 class="text-white text-2xl font-bold font-['Kanit'] animate-pulse">กำลังเตรียมหน้าเว็บ...</h2>
     </div>
 
     <!-- ระบบดนตรีประกอบ -->
@@ -74,10 +74,10 @@
                 <!-- เลเยอร์ปุ่ม วางซ้อนเข้าไปในส่วนล่างของภาพ -->
                 <div class="absolute inset-0 flex flex-col justify-end items-center pb-[12%] sm:pb-[8%]">
                     <div class="flex flex-col gap-3 w-full px-4 items-center">
-                        <button onclick="startGameFlow()" class="w-full max-w-[200px] sm:max-w-[260px] px-6 py-3 sm:py-4 bg-gradient-to-b from-pink-400 to-pink-600 border-b-[6px] border-pink-800 hover:border-b-[3px] hover:translate-y-1 active:border-b-0 active:translate-y-2 rounded-full font-black text-2xl sm:text-3xl text-white transition-all shadow-[0_10px_20px_rgba(236,72,153,0.8)] tracking-wider flex items-center justify-center">
+                        <button onclick="startGameFlow()" class="w-full max-w-[200px] sm:max-w-[260px] px-6 py-3 sm:py-4 bg-gradient-to-b from-pink-400 to-pink-600 border-b-[6px] border-pink-800 hover:border-b-[3px] hover:translate-y-1 active:border-b-0 active:translate-y-2 rounded-full font-black text-2xl sm:text-3xl text-white transition-all shadow-[0_10px_20px_rgba(236,72,153,0.8)] tracking-wider flex items-center justify-center cursor-pointer pointer-events-auto">
                             START
                         </button>
-                        <button onclick="toggleHowTo()" class="w-full max-w-[200px] sm:max-w-[260px] px-6 py-3 sm:py-4 bg-gradient-to-b from-blue-400 to-blue-600 border-b-[6px] border-blue-800 hover:border-b-[3px] hover:translate-y-1 active:border-b-0 active:translate-y-2 rounded-full font-bold text-xl sm:text-2xl text-white transition-all shadow-[0_10px_20px_rgba(59,130,246,0.8)] tracking-wider flex items-center justify-center">
+                        <button onclick="toggleHowTo()" class="w-full max-w-[200px] sm:max-w-[260px] px-6 py-3 sm:py-4 bg-gradient-to-b from-blue-400 to-blue-600 border-b-[6px] border-blue-800 hover:border-b-[3px] hover:translate-y-1 active:border-b-0 active:translate-y-2 rounded-full font-bold text-xl sm:text-2xl text-white transition-all shadow-[0_10px_20px_rgba(59,130,246,0.8)] tracking-wider flex items-center justify-center cursor-pointer pointer-events-auto">
                             HOW TO PLAY
                         </button>
                     </div>
@@ -135,7 +135,7 @@
         <p id="loading-status" class="text-cyan-300 animate-pulse-fast">กำลังสตาร์ทอัพ AI และวอมระบบตรวจจับ (รอสักครู่)...</p>
         <div class="mt-4 flex flex-col items-center gap-2">
             <div class="px-4 py-2 bg-white/5 rounded-full text-xs text-gray-400 flex items-center gap-2 border border-white/10">
-                กล้อง: <span id="camera-warmup-status" class="text-yellow-500">กำลังเชื่อมต่อ...</span>
+                กล้อง: <span id="camera-warmup-status" class="text-yellow-500">รอการอนุญาต...</span>
             </div>
             <div class="px-4 py-2 bg-white/5 rounded-full text-xs text-gray-400 flex items-center gap-2 border border-white/10">
                 AI วอมอัป: <span id="ai-warmup-status" class="text-yellow-500">รอเฟรมแรก...</span>
@@ -146,7 +146,6 @@
     <!-- หน้าสร้างข้อสอบ -->
     <div id="content-screen" class="absolute inset-0 z-40 flex flex-col items-center justify-center bg-slate-900/90 backdrop-blur-md hidden p-4">
         <div class="w-full max-w-3xl flex flex-col gap-6 relative">
-            <!-- Neon glow behind the box -->
             <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-orange-500 rounded-3xl blur opacity-20"></div>
             
             <div class="bg-slate-900 p-8 rounded-3xl border border-white/10 shadow-2xl relative">
@@ -190,8 +189,8 @@
                 <div class="flex items-center gap-4 bg-black/40 py-2 px-4 rounded-xl border border-white/5">
                     <span class="text-lg text-gray-300">เลือกแล้ว: <span id="selected-count" class="font-bold text-orange-400 text-2xl drop-shadow-[0_0_5px_rgba(249,115,22,0.5)]">0</span> ข้อ</span>
                     <div class="h-8 w-px bg-white/20 mx-2"></div>
-                    <button onclick="toggleSelectAll()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-sm font-bold transition">สลับเลือกทั้งหมด</button>
-                    <button onclick="downloadQuiz()" class="px-4 py-2 bg-green-600/80 hover:bg-green-500 rounded-lg text-sm font-bold transition flex items-center gap-2">
+                    <button onclick="toggleSelectAll()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-sm font-bold transition text-white">สลับเลือกทั้งหมด</button>
+                    <button onclick="downloadQuiz()" class="px-4 py-2 bg-green-600/80 hover:bg-green-500 rounded-lg text-sm font-bold transition flex items-center gap-2 text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                         โหลดไฟล์ (.txt)
                     </button>
@@ -199,14 +198,13 @@
             </div>
             
             <div id="quiz-list" class="flex-1 overflow-y-auto custom-scrollbar pr-4 mb-6 space-y-4">
-                <!-- เนื้อหาจะถูกเติมด้วย JavaScript -->
             </div>
             
             <div class="flex justify-between items-center pt-6 border-t border-white/10">
                 <button onclick="showContentScreen()" class="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold transition text-gray-200">ย้อนกลับ</button>
                 <div class="flex gap-4">
-                    <button onclick="setLimitAndProceed(10)" class="px-6 py-3 bg-blue-600/80 hover:bg-blue-500 rounded-xl font-bold transition shadow-lg border border-blue-400/30">เล่น 10 ข้อ (สุ่ม)</button>
-                    <button onclick="setLimitAndProceed(20)" class="px-8 py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 rounded-xl font-bold transition shadow-[0_0_20px_rgba(249,115,22,0.4)] text-lg border border-orange-400/30">เริ่มเล่นทั้งหมดที่เลือก</button>
+                    <button onclick="setLimitAndProceed(10)" class="px-6 py-3 bg-blue-600/80 hover:bg-blue-500 text-white rounded-xl font-bold transition shadow-lg border border-blue-400/30">เล่น 10 ข้อ (สุ่ม)</button>
+                    <button onclick="setLimitAndProceed(20)" class="px-8 py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white rounded-xl font-bold transition shadow-[0_0_20px_rgba(249,115,22,0.4)] text-lg border border-orange-400/30">เริ่มเล่นทั้งหมดที่เลือก</button>
                 </div>
             </div>
         </div>
@@ -216,13 +214,11 @@
     <div id="edit-modal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-800 p-6 rounded-3xl border border-cyan-500/50 w-full max-w-2xl shadow-[0_0_30px_rgba(6,182,212,0.2)]">
             <h3 class="text-2xl font-bold text-cyan-400 mb-4 border-b border-white/10 pb-3">✏️ แก้ไขข้อสอบ</h3>
-            
             <div class="space-y-4">
                 <div>
                     <label class="block text-sm font-bold text-gray-400 mb-1">คำถาม</label>
                     <textarea id="edit-q" rows="2" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-cyan-500"></textarea>
                 </div>
-                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-bold text-gray-400 mb-1">ตัวเลือก A</label>
@@ -241,7 +237,6 @@
                         <input type="text" id="edit-opt-3" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-cyan-500">
                     </div>
                 </div>
-
                 <div>
                     <label class="block text-sm font-bold text-orange-400 mb-1">เฉลยที่ถูกต้อง</label>
                     <select id="edit-ans" class="w-full bg-black/50 border border-orange-500/50 rounded-xl p-3 text-white focus:outline-none focus:border-orange-500 appearance-none">
@@ -252,9 +247,8 @@
                     </select>
                 </div>
             </div>
-
             <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-white/10">
-                <button onclick="closeEditModal()" class="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded-xl font-bold transition">ยกเลิก</button>
+                <button onclick="closeEditModal()" class="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-xl font-bold transition">ยกเลิก</button>
                 <button onclick="saveEditModal()" class="px-6 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl font-bold transition shadow-lg shadow-cyan-500/30">บันทึกการแก้ไข</button>
             </div>
         </div>
@@ -342,81 +336,10 @@
         <div class="w-full h-full bg-cyan-500/60 backdrop-blur-sm border-2 border-cyan-300 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.8)] text-xl">🎯</div>
     </div>
 
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
-        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
-        import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js';
-
-        // --- ระบบโหลดหน้าแรก (Pre-loader) และจัดการสิทธิ์กล้อง ---
-        window.addEventListener('DOMContentLoaded', async () => {
-            const loaderText = document.querySelector('#initial-loader h2');
-            
-            try {
-                // 1. ขออนุญาตเข้าถึงกล้องเป็นลำดับแรกสุด
-                loaderText.innerText = "กรุณากดยอมรับการเข้าถึงกล้องบนเบราว์เซอร์...";
-                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-                
-                // ปิด stream ชั่วคราวเมื่อได้สิทธิ์แล้ว (MediaPipe จะเปิดใช้งานเองภายหลังโดยไม่ต้องขอใหม่)
-                stream.getTracks().forEach(track => track.stop());
-
-                // 2. โหลดภาพพื้นหลังและ UI ต่อไป
-                loaderText.innerText = "กำลังโหลดภาพและระบบ...";
-                
-                const img = new Image();
-                img.src = 'https://img5.pic.in.th/file/secure-sv1/Gemini_Generated_Image_pbrn3dpbrn3dpbrn.png';
-                img.onload = () => {
-                    setTimeout(() => {
-                        const loader = document.getElementById('initial-loader');
-                        if(loader) loader.classList.add('hidden');
-                        
-                        const homeScreen = document.getElementById('home-screen');
-                        if(homeScreen) {
-                            homeScreen.classList.remove('hidden');
-                            homeScreen.classList.add('flex');
-                        }
-                        
-                        const bgImg = document.getElementById('main-bg-img');
-                        if(bgImg) bgImg.classList.remove('opacity-0');
-                    }, 500); // ลดเวลาหน่วงลงเพราะใช้เวลาขอสิทธิ์กล้องไปแล้ว
-                };
-                img.onerror = () => {
-                    document.getElementById('initial-loader').classList.add('hidden');
-                    document.getElementById('home-screen').classList.remove('hidden');
-                    document.getElementById('home-screen').classList.add('flex');
-                };
-
-            } catch (err) {
-                console.error("Camera access error:", err);
-                loaderText.innerHTML = "❌ ระบบต้องการใช้งานกล้องเพื่อเล่นเกม<br><span class='text-lg text-gray-400 font-normal mt-2 block'>กรุณาอนุญาตสิทธิ์กล้องในเบราว์เซอร์แล้วกดรีเฟรชหน้าเว็บ (F5)</span>";
-                loaderText.classList.remove('animate-pulse');
-                loaderText.classList.add('text-red-400', 'text-center');
-                const loadingDots = document.querySelector('#initial-loader .flex');
-                if(loadingDots) loadingDots.classList.add('hidden');
-            }
-        });
-        // -----------------------------------
-
-        // ⚠️ สำคัญ: หากนำไปรันบน GitHub Pages คุณต้องใส่ Gemini API Key ของคุณในช่องว่างด้านล่างนี้
+    <!-- แก้ไขเป็นสคริปต์ปกติ (ไม่ใช่ module) เพื่อแก้ปัญหาเรื่อง CORS/Firebase บน GitHub Pages -->
+    <script>
+        // ⚠️ สำคัญ: คีย์ Gemini API ของคุณ
         const apiKey = "AIzaSyC5k1_4Ryq9tBx9nXMxAzxlsuKqX2j8kGs"; 
-        
-        let firebaseConfig = null;
-        if (typeof __firebase_config !== 'undefined') {
-            try { firebaseConfig = JSON.parse(__firebase_config); } catch(e) {}
-        }
-        
-        let app, auth, db, currentUser = null;
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'ai-motion-quiz-v2';
-
-        // ป้องกันแอปค้างหากโหลด Firebase ไม่สำเร็จ (เล่นแบบไม่ต้องเซฟคลาวด์ได้)
-        if (firebaseConfig) {
-            try {
-                app = initializeApp(firebaseConfig);
-                auth = getAuth(app);
-                db = getFirestore(app);
-            } catch (e) {
-                console.warn("Firebase Init Skipped:", e);
-            }
-        }
 
         let state = {
             step: 'HOME',
@@ -435,19 +358,16 @@
             currentPrompt: "",
             isModelWarmingUp: true,
             cameraStarted: false,
-            editingIndex: -1 // สำหรับระบบแก้ไข
+            editingIndex: -1
         };
 
         const THRESHOLD = 2500; // ดีเลย์ 2.5 วินาที
-
-        // วอมอัปสถานะ
         let handsReady = false;
         let poseReady = false;
-
-        // --- ระบบดนตรีประกอบ ---
         let isBGMMuted = false;
         let bgmStarted = false;
 
+        // --- ระบบดนตรีประกอบ ---
         window.toggleBGM = () => {
             const bgm = document.getElementById('bgm');
             const iconOn = document.getElementById('icon-sound-on');
@@ -475,23 +395,24 @@
         window.addEventListener('click', tryStartBGM, { once: true });
         // ----------------------
 
-        window.onload = async () => {
-            if (auth) {
-                try {
-                    const initAuth = async () => {
-                        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                            await signInWithCustomToken(auth, __initial_auth_token);
-                        } else {
-                            await signInAnonymously(auth);
-                        }
-                    };
-                    await initAuth();
-                    onAuthStateChanged(auth, (user) => { currentUser = user; });
-                } catch(e) {
-                    console.warn("Auth skipped, running in local mode.");
-                }
-            }
-        };
+        // --- โหลดหน้าแรกโดยยังไม่ขอกล้องทันที ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const img = new Image();
+            img.src = 'https://img5.pic.in.th/file/secure-sv1/Gemini_Generated_Image_pbrn3dpbrn3dpbrn.png';
+            img.onload = () => {
+                setTimeout(() => {
+                    document.getElementById('initial-loader').classList.add('hidden');
+                    document.getElementById('home-screen').classList.remove('hidden');
+                    document.getElementById('home-screen').classList.add('flex');
+                    document.getElementById('main-bg-img').classList.remove('opacity-0');
+                }, 500);
+            };
+            img.onerror = () => {
+                document.getElementById('initial-loader').classList.add('hidden');
+                document.getElementById('home-screen').classList.remove('hidden');
+                document.getElementById('home-screen').classList.add('flex');
+            };
+        });
 
         window.toggleHowTo = () => {
             const el = document.getElementById('howto-screen');
@@ -500,13 +421,15 @@
             if(!el.classList.contains('hidden')) el.style.display = 'flex';
         }
 
+        // --- ทำงานเมื่อกดปุ่ม START (หลีกเลี่ยง Safari Block Camera) ---
         window.startGameFlow = () => {
+            tryStartBGM(); // พยายามเปิดเพลง
             document.getElementById('home-screen').classList.add('hidden');
             document.getElementById('loading-screen').classList.remove('hidden');
             state.step = 'LOADING';
             
             if(!state.cameraStarted) {
-                initMediaPipe();
+                initMediaPipe(); // เริ่มขอกล้องหลังจากผู้ใช้กดปุ่มแล้ว
             } else {
                 checkWarmupComplete();
             }
@@ -514,6 +437,17 @@
 
         async function initMediaPipe() {
             state.cameraStarted = true;
+            
+            // ขออนุญาตเข้าถึงกล้อง (ทำหลังจากถูกคลิกปุ่ม START แล้ว)
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                stream.getTracks().forEach(track => track.stop()); // ปิดไปก่อน เดี๋ยว MediaPipe เปิดเอง
+            } catch(err) {
+                console.error("Camera access error:", err);
+                document.getElementById('loading-status').innerHTML = "❌ <span class='text-red-400'>เบราว์เซอร์ของคุณบล็อกกล้อง กรุณาอนุญาตสิทธิ์ในตั้งค่าเบราว์เซอร์แล้วรีเฟรชครับ</span>";
+                return; // ถ้าไม่อนุญาต ให้หยุดทำงานตรงนี้
+            }
+
             const video = document.getElementById('webcam');
             const hands = new Hands({locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`});
             hands.setOptions({ maxNumHands: 1, modelComplexity: 1, minDetectionConfidence: 0.6, minTrackingConfidence: 0.6 });
@@ -542,17 +476,15 @@
                         canvas.width = video.videoWidth; canvas.height = video.videoHeight;
                     }
 
-                    // ป้องกัน iPad เด้ง: หากอยู่ในหน้าสร้างข้อสอบ หรือหน้า Preview ให้ข้ามการรันโมเดลกล้องไปเลย เพื่อคืน Ram ให้เครื่อง
+                    // ป้องกันกระตุก: ข้ามตอนอยู่หน้าสร้างข้อสอบหรือพรีวิว
                     if (state.step === 'CONTENT' || state.step === 'PREVIEW' || state.step === 'SUMMARY') {
                         return;
                     }
 
-                    // ถ้าระบบกำลังวอมอัป ให้ส่งเฟรมไปประมวลผลทั้งคู่ เพื่อให้โมเดลโหลดเสร็จสมบูรณ์
                     if (state.isModelWarmingUp) {
                         await pose.send({image: video});
                         await hands.send({image: video});
                     } 
-                    // ถ้ากำลังเล่นเกมอยู่ ให้ประมวลผลเฉพาะโมเดลที่ใช้งานอยู่ เพื่อลดความร้อนของเครื่อง
                     else if (state.step === 'PLAY' || state.step === 'MODE') {
                         if (state.mode === 'body') await pose.send({image: video});
                         else await hands.send({image: video});
@@ -575,10 +507,9 @@
                 document.getElementById('ai-warmup-status').innerText = "พร้อม 100% ✓";
                 document.getElementById('ai-warmup-status').className = "text-green-400";
                 
-                // ถ้ารออยู่หน้าโหลด ให้ไปหน้าสร้างคอนเทนต์เลย
                 if (state.step === 'LOADING') {
                     setTimeout(() => {
-                        state.isModelWarmingUp = false; // ปิดการวอม เพื่อเซฟแบต
+                        state.isModelWarmingUp = false; 
                         document.getElementById('loading-screen').classList.add('hidden');
                         showContentScreen();
                     }, 800);
@@ -696,7 +627,6 @@
             const list = document.getElementById('quiz-list');
             list.innerHTML = "";
             
-            // ถ้าเข้ามาครั้งแรก เลือกหมดทุกข้อ
             if(state.selectedIndices.size === 0 && list.children.length === 0) {
                 state.selectedIndices = new Set(state.rawQuestions.map((_, i) => i));
             }
@@ -754,7 +684,6 @@
             window.renderPreview();
         };
 
-        // --- ระบบดาวน์โหลดข้อสอบ ---
         window.downloadQuiz = () => {
             if(state.selectedIndices.size === 0) return alert("กรุณาเลือกข้อสอบอย่างน้อย 1 ข้อครับ");
             
@@ -774,7 +703,6 @@
                 }
             });
 
-            // สร้างไฟล์ Blob และลิงก์ดาวน์โหลด
             const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -786,7 +714,6 @@
             URL.revokeObjectURL(url);
         };
 
-        // --- ระบบแก้ไขข้อสอบ ---
         window.openEditModal = (idx) => {
             state.editingIndex = idx;
             const q = state.rawQuestions[idx];
@@ -799,9 +726,8 @@
             document.getElementById('edit-opt-2').value = safeOptions[2];
             document.getElementById('edit-opt-3').value = safeOptions[3];
 
-            // หาว่าคำตอบตรงกับ index ไหน
             let ansIndex = safeOptions.indexOf(q.a);
-            if(ansIndex === -1) ansIndex = 0; // fallback
+            if(ansIndex === -1) ansIndex = 0;
             document.getElementById('edit-ans').value = ansIndex;
 
             document.getElementById('edit-modal').classList.remove('hidden');
@@ -828,7 +754,6 @@
                 return alert("กรุณากรอกข้อมูลให้ครบทุกช่องครับ");
             }
 
-            // อัปเดตข้อมูล
             state.rawQuestions[state.editingIndex] = {
                 q: newQ,
                 options: newOpts,
@@ -843,9 +768,7 @@
             const selected = Array.from(state.selectedIndices).map(i => state.rawQuestions[i]);
             if (selected.length === 0) return alert("กรุณาเลือกข้อสอบอย่างน้อย 1 ข้อครับ");
             
-            // สุ่มข้อถ้าเลือกเล่น 10 ข้อ แต่เลือกไว้เยอะกว่า
             if(limitNum === 10 && selected.length > 10) {
-                // Shuffle array
                 const shuffled = selected.sort(() => 0.5 - Math.random());
                 state.activeQueue = shuffled.slice(0, 10);
             } else {
@@ -873,7 +796,6 @@
             state.canAnswer = false; state.selectionTimer = 0; state.lastZone = -1;
             updateUIBars(0, -1);
             
-            // รีเซ็ตสีกล่อง
             document.querySelectorAll('.option-box').forEach((box, i) => {
                 box.classList.remove('bg-green-500', 'bg-red-500', 'text-white', 'border-white');
                 box.classList.add('bg-slate-800', 'text-white');
@@ -883,7 +805,6 @@
             document.getElementById('progress-display').innerText = `${state.currentIdx + 1}/${state.activeQueue.length}`;
             document.getElementById('question-display').innerText = q.q;
             
-            // ป้องกันกรณี AI พ่น options มาไม่ครบ 4
             const safeOptions = q.options && q.options.length >= 4 ? q.options : ['A','B','C','D'];
             
             safeOptions.forEach((opt, i) => {
@@ -894,7 +815,6 @@
             });
             
             speak(q.q);
-            // ดีเลย์นิดนึงให้คนอ่านโจทย์ก่อนตอบได้
             setTimeout(() => { state.canAnswer = true; }, 800);
         }
 
@@ -967,7 +887,7 @@
             if (res.poseLandmarks) {
                 const nose = res.poseLandmarks[0];
                 state.bodyPos = { x: 1 - nose.x, y: nose.y };
-                ctx.fillStyle = '#06b6d4'; // Cyan tracking dot
+                ctx.fillStyle = '#06b6d4';
                 ctx.beginPath(); ctx.arc(nose.x * canvas.width, nose.y * canvas.height, 12, 0, 2 * Math.PI); ctx.fill();
                 ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
                 
