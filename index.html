@@ -83,6 +83,10 @@
                     </div>
                 </div>
             </div>
+            <!-- ลายน้ำบอกเวอร์ชันเพื่อเช็กว่าโค้ดอัปเดตหรือยัง -->
+            <div class="absolute bottom-4 right-4 text-xs font-bold text-cyan-500/50 pointer-events-none z-50 tracking-widest">
+                VERSION 2.1 (API FIX)
+            </div>
         </div>
     </div>
 
@@ -589,7 +593,6 @@
             document.getElementById('loading-status').innerText = "AI กำลังวิเคราะห์และแต่งข้อสอบ (ใช้เวลา 5-15 วินาที)...";
             
             try {
-                // เปลี่ยนจากรุ่น preview เป็น gemini-1.5-flash ซึ่งเสถียรและรองรับ public API key 100%
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, { 
                     method: 'POST', 
                     headers: { 'Content-Type': 'application/json' }, 
@@ -600,18 +603,31 @@
                     }) 
                 });
                 
-                // ตรวจสอบว่ามี Error จากระบบ Google หรือไม่
                 if (!res.ok) {
-                    const errData = await res.json();
-                    throw new Error(`API Error ${res.status}: ${errData.error?.message || 'ไม่ทราบสาเหตุ'}`);
+                    let errDetail = 'ไม่ทราบสาเหตุ';
+                    try {
+                        const errData = await res.json();
+                        errDetail = errData.error?.message || errDetail;
+                    } catch(e){}
+                    throw new Error(`HTTP ${res.status} - ${errDetail}`);
                 }
 
                 const data = await res.json();
                 
+                if (!data.candidates || data.candidates.length === 0) {
+                    throw new Error("API ไม่ส่งข้อมูลกลับมา (อาจถูกบล็อกเนื้อหา)");
+                }
+
                 let rawText = data.candidates[0].content.parts[0].text;
-                rawText = rawText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+                rawText = rawText.replace(/```json\n?/gi, '').replace(/```\n?/g, '').trim();
                 
-                const result = JSON.parse(rawText);
+                let result;
+                try {
+                    result = JSON.parse(rawText);
+                } catch (parseErr) {
+                    console.error("Raw AI Output:", rawText);
+                    throw new Error("AI ตอบกลับมาผิดรูปแบบ (ไม่ได้เป็น JSON)");
+                }
                 
                 if(!result.questions || result.questions.length === 0) {
                     throw new Error("AI ไม่ได้ส่งข้อสอบกลับมาในรูปแบบที่ถูกต้อง");
@@ -623,8 +639,8 @@
                 renderPreview();
             } catch (err) {
                 console.error("AI Generation Error:", err);
-                // แจ้งสาเหตุ Error ที่แท้จริงให้ทราบ
-                alert("ระบบ AI ขัดข้อง: " + err.message + "\n\nกรุณาลองใหม่อีกครั้งครับ");
+                // เปลี่ยนข้อความแจ้งเตือนให้ชัดเจนขึ้นว่าติดปัญหาอะไร
+                alert("⚠️ ระบบขัดข้อง (V2.1):\n\n" + err.message + "\n\nคำแนะนำ:\n- หากขึ้น HTTP 400 หมายถึง API Key ผิด\n- หากขึ้น HTTP 403 หมายถึง API Key นี้ยังไม่ได้เปิดสิทธิ์ใช้งาน\n- ให้ลองตรวจสอบเว้นวรรคใน API Key อีกครั้ง");
                 document.getElementById('loading-screen').classList.add('hidden');
                 showContentScreen();
             }
