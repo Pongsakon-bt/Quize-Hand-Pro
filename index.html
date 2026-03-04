@@ -396,19 +396,26 @@
         });
         // -----------------------------------
 
-        const apiKey = "AIzaSyC5k1_4Ryq9tBx9nXMxAzxlsuKqX2j8kGs";
-        const firebaseConfig = JSON.parse(__firebase_config);
+        // ⚠️ สำคัญ: หากนำไปรันบน GitHub Pages คุณต้องใส่ Gemini API Key ของคุณในช่องว่างด้านล่างนี้
+        const apiKey = "AIzaSyC5k1_4Ryq9tBx9nXMxAzxlsuKqX2j8kGs"; 
+        
+        let firebaseConfig = null;
+        if (typeof __firebase_config !== 'undefined') {
+            try { firebaseConfig = JSON.parse(__firebase_config); } catch(e) {}
+        }
         
         let app, auth, db, currentUser = null;
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'ai-motion-quiz-v2';
 
-        // ป้องกัน iPad ค้างหากโหลด Firebase ไม่สำเร็จ (เล่นแบบไม่ต้องเซฟคลาวด์ได้)
-        try {
-            app = initializeApp(firebaseConfig);
-            auth = getAuth(app);
-            db = getFirestore(app);
-        } catch (e) {
-            console.warn("Firebase Init Skipped:", e);
+        // ป้องกันแอปค้างหากโหลด Firebase ไม่สำเร็จ (เล่นแบบไม่ต้องเซฟคลาวด์ได้)
+        if (firebaseConfig) {
+            try {
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+            } catch (e) {
+                console.warn("Firebase Init Skipped:", e);
+            }
         }
 
         let state = {
