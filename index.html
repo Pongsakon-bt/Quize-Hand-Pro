@@ -400,27 +400,18 @@
         });
         // -----------------------------------
 
-        // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCPmMHT4DxMnx-kv04JZV_rLuFxY_9E7r0",
-  authDomain: "quize-69ce8.firebaseapp.com",
-  projectId: "quize-69ce8",
-  storageBucket: "quize-69ce8.firebasestorage.app",
-  messagingSenderId: "85649913401",
-  appId: "1:85649913401:web:9a3bb0232a633d59537fe8",
-  measurementId: "G-6E4GZ5WC8D"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+        const apiKey = "";
+        
+        // --- ตั้งค่า Firebase ของคุณตรงนี้ ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyCPmMHT4DxMnx-kv04JZV_rLuFxY_9E7r0",
+            authDomain: "quize-69ce8.firebaseapp.com",
+            projectId: "quize-69ce8",
+            storageBucket: "quize-69ce8.firebasestorage.app",
+            messagingSenderId: "85649913401",
+            appId: "1:85649913401:web:9a3bb0232a633d59537fe8",
+            measurementId: "G-6E4GZ5WC8D"
+        };
         
         let app, auth, db, currentUser = null;
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'ai-motion-quiz-v2';
