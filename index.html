@@ -85,7 +85,7 @@
             </div>
             <!-- ลายน้ำบอกเวอร์ชันเพื่อเช็กว่าโค้ดอัปเดตหรือยัง -->
             <div class="absolute bottom-4 right-4 text-xs font-bold text-cyan-500/50 pointer-events-none z-50 tracking-widest">
-                VERSION 2.1 (API FIX)
+                VERSION 2.2 (MODEL FIX)
             </div>
         </div>
     </div>
@@ -593,7 +593,8 @@
             document.getElementById('loading-status').innerText = "AI กำลังวิเคราะห์และแต่งข้อสอบ (ใช้เวลา 5-15 วินาที)...";
             
             try {
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, { 
+                // แก้ไขเปลี่ยนเป็นโมเดลล่าสุด (gemini-2.5-flash) ป้องกัน Error 404 (Not Found)
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, { 
                     method: 'POST', 
                     headers: { 'Content-Type': 'application/json' }, 
                     body: JSON.stringify({
@@ -639,8 +640,8 @@
                 renderPreview();
             } catch (err) {
                 console.error("AI Generation Error:", err);
-                // เปลี่ยนข้อความแจ้งเตือนให้ชัดเจนขึ้นว่าติดปัญหาอะไร
-                alert("⚠️ ระบบขัดข้อง (V2.1):\n\n" + err.message + "\n\nคำแนะนำ:\n- หากขึ้น HTTP 400 หมายถึง API Key ผิด\n- หากขึ้น HTTP 403 หมายถึง API Key นี้ยังไม่ได้เปิดสิทธิ์ใช้งาน\n- ให้ลองตรวจสอบเว้นวรรคใน API Key อีกครั้ง");
+                // อัปเดตข้อความแจ้งเตือนให้ครอบคลุม 404 
+                alert("⚠️ ระบบขัดข้อง (V2.2):\n\n" + err.message + "\n\nคำแนะนำ:\n- หากขึ้น HTTP 400 หมายถึง API Key ผิด\n- หากขึ้น HTTP 403 หมายถึง API Key นี้ยังไม่ได้เปิดสิทธิ์ใช้งาน\n- หากขึ้น HTTP 404 หมายถึง รุ่นของ AI ไม่ถูกต้องหรือถูกยกเลิก (ได้ทำการอัปเดตเป็นรุ่นล่าสุดแล้ว)\n- ให้ลองตรวจสอบการเว้นวรรคใน API Key อีกครั้ง");
                 document.getElementById('loading-screen').classList.add('hidden');
                 showContentScreen();
             }
